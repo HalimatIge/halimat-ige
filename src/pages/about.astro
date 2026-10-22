@@ -1,0 +1,480 @@
+
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const skills = [
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Astro"],
+  },
+  {
+    category: "Styling & UI",
+    items: ["Tailwind CSS", "shadcn/ui", "CSS", "Responsive Design"],
+  },
+  {
+    category: "Backend & APIs",
+    items: ["Node.js", "Express.js", "REST APIs", "MongoDB", "SQL"],
+  },
+  {
+    category: "Tools",
+    items: ["Git", "GitHub", "Postman", "Vercel", "Figma"],
+  },
+];
+
+const principles = [
+  {
+    number: "01",
+    title: "Thoughtful interfaces",
+    description:
+      "I care about clear layouts, readable typography, consistent spacing, and interfaces that feel natural to use.",
+  },
+  {
+    number: "02",
+    title: "Reusable, maintainable code",
+    description:
+      "I aim to build components that are easy to understand, reuse, test, and extend as a product grows.",
+  },
+  {
+    number: "03",
+    title: "Continuous learning",
+    description:
+      "I keep improving my skills by building projects, exploring tools, learning from feedback, and working through real-world problems.",
+  },
+];
+---
+
+<Layout
+  title="About — Halimat Ige"
+  description="Learn more about Halimat Ige, her approach to frontend development, technical skills, and interests."
+>
+  <Header />
+
+  <main class="container page-section">
+    <section class="about-intro">
+      <p class="eyebrow">A little about me</p>
+      <h1 class="page-title">Building for the web, with intention.</h1>
+
+      <p class="lead">
+        I'm Halimat Ige, a frontend developer who enjoys turning ideas into
+        useful, accessible, and thoughtful digital experiences.
+      </p>
+    </section>
+
+    
+<section class="profile-section" aria-label="Introduction">
+  <div class="profile-copy">
+    <h2>Hello, there.</h2>
+
+    <p>
+      I have a background in Computer Science and an interest in creating
+      web interfaces that balance visual simplicity with practical
+      functionality.
+    </p>
+
+    <p>
+      My experience includes building frontend features for a
+      Cohort-Based Experience Development Platform, improving internal enterprise applications,
+      and developing personal projects that help me explore the full
+      stack.
+    </p>
+
+    <p>
+      I enjoy collaborating with designers and backend developers,
+      learning how products work behind the scenes, and finding better
+      ways to solve problems through code.
+    </p>
+
+    <a class="text-link" href="/projects">Explore my projects →</a>
+  </div>
+</section>
+
+
+    <section class="approach-section" aria-labelledby="approach-heading">
+      <div class="section-heading">
+        <p class="eyebrow">What matters to me</p>
+        <h2 id="approach-heading">My approach</h2>
+      </div>
+
+      <div class="principle-list">
+        {principles.map((principle) => (
+          <article class="principle">
+            <span class="principle-number">{principle.number}</span>
+            <div>
+              <h3>{principle.title}</h3>
+              <p>{principle.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="skills-section" aria-labelledby="skills-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Tools of the trade</p>
+        <h2 id="skills-heading">Skills & technologies</h2>
+      </div>
+
+      <div class="skills-list">
+        {skills.map((group) => (
+          <div class="skill-group">
+            <h3>{group.category}</h3>
+            <div class="skill-items">
+              {group.items.map((skill) => <span>{skill}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="currently-section" aria-labelledby="currently-heading">
+      <p class="eyebrow">Right now</p>
+      <h2 id="currently-heading">Always becoming.</h2>
+
+      <div class="currently-grid">
+        <article>
+          <span class="currently-icon" aria-hidden="true">↗</span>
+          <h3>Building</h3>
+          <p>Developing real-world interfaces and refining my portfolio.</p>
+        </article>
+
+        <article>
+          <span class="currently-icon" aria-hidden="true">⌘</span>
+          <h3>Learning</h3>
+          <p>Deepening my frontend skills and growing as a software developer.</p>
+        </article>
+
+        <article>
+          <span class="currently-icon" aria-hidden="true">◎</span>
+          <h3>Exploring</h3>
+          <p>Looking for meaningful projects and opportunities to collaborate.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <h2>Have something in mind?</h2>
+      <p>I'd love to hear about what you're working on.</p>
+      <a class="cta-link" href="/contact">
+        Get in touch <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .about-intro {
+    max-width: 620px;
+    padding-bottom: 37px;
+  }
+
+  .about-intro .eyebrow {
+    margin: 0 0 11px;
+  }
+
+  .about-intro .page-title {
+    max-width: 500px;
+    font-size: clamp(2rem, 5vw, 2.65rem);
+    line-height: 1.2;
+  }
+
+  .about-intro .lead {
+    max-width: 560px;
+    margin-top: 18px;
+  }
+
+  .profile-section {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+    gap: 34px;
+    padding-block: 30px 46px;
+    border-top: 1px solid var(--border);
+  }
+
+  .profile-art {
+    position: relative;
+    display: grid;
+    min-height: 250px;
+    overflow: hidden;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background:
+      radial-gradient(ellipse at 50% 45%, #e8d5c8 0%, transparent 64%),
+      var(--surface);
+  }
+
+  :root[data-theme="dark"] .profile-art {
+    background:
+      radial-gradient(ellipse at 50% 45%, #49352d 0%, transparent 64%),
+      var(--surface);
+  }
+
+  .art-orbit {
+    position: absolute;
+    width: 155px;
+    height: 155px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 50%;
+  }
+
+  .orbit-one {
+    transform: scaleX(1.45) rotate(-30deg);
+  }
+
+  .orbit-two {
+    transform: scaleX(1.45) rotate(30deg);
+  }
+
+  .art-center {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text);
+    font-size: 3.5rem;
+    font-weight: 650;
+    letter-spacing: -0.1em;
+  }
+
+  .art-dot {
+    width: 9px;
+    height: 9px;
+    margin-top: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .art-caption {
+    position: absolute;
+    bottom: 17px;
+    color: var(--muted);
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+  }
+
+  .profile-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.profile-copy {
+  width: 100%;
+  max-width: 680px;
+}
+
+  .profile-copy h2,
+  .section-heading h2,
+  .currently-section > h2,
+  .about-cta h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 650;
+    letter-spacing: -0.035em;
+  }
+
+  .profile-copy > p {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.85;
+  }
+
+  .profile-copy > a {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 0.9rem;
+  }
+
+  .approach-section,
+  .skills-section,
+  .currently-section {
+    padding-top: 35px;
+    border-top: 1px solid var(--border);
+  }
+
+  .approach-section,
+  .skills-section {
+    margin-top: 5px;
+    padding-bottom: 38px;
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
+  }
+
+  .section-heading .eyebrow,
+  .currently-section > .eyebrow {
+    margin: 0 0 5px;
+  }
+
+  .principle-list {
+    border-top: 1px solid var(--border);
+  }
+
+  .principle {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    padding-block: 21px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .principle-number {
+    padding-top: 2px;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .principle h3,
+  .skill-group h3,
+  .currently-grid h3 {
+    margin: 0;
+    font-size: 0.96rem;
+    font-weight: 650;
+  }
+
+  .principle p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .skills-list {
+    border-top: 1px solid var(--border);
+  }
+
+  .skill-group {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 15px;
+    padding-block: 19px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-items span {
+    padding: 3px 9px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .currently-section {
+    padding-bottom: 38px;
+  }
+
+  .currently-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+    margin-top: 23px;
+  }
+
+  .currently-grid article {
+    min-height: 150px;
+    padding: 17px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  .currently-icon {
+    display: inline-grid;
+    width: 27px;
+    height: 27px;
+    margin-bottom: 13px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--accent);
+  }
+
+  .currently-grid h3 {
+    font-size: 0.9rem;
+  }
+
+  .currently-grid p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  .about-cta {
+    margin-top: 8px;
+    padding: 29px 24px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+  }
+
+  .about-cta > p {
+    margin: 8px 0 17px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    color: var(--accent);
+    font-size: 0.88rem;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .cta-link:hover {
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  @media (max-width: 600px) {
+    .about-intro {
+      padding-bottom: 29px;
+    }
+
+    .profile-section {
+      grid-template-columns: 1fr;
+      gap: 25px;
+      padding-top: 24px;
+    }
+
+    .profile-art {
+      min-height: 220px;
+    }
+
+    .skill-group {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .currently-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .currently-grid article {
+      min-height: auto;
+    }
+
+    .about-cta {
+      padding: 23px 18px;
+    }
+  }
+</style>

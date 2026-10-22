@@ -1,0 +1,299 @@
+
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+
+const projects = [
+  {
+    name: "PN Africa",
+    description:
+      "A cohort-based experience-development platform where applicants apply for admission, undergo administrative review. Aspiring mentors can also apply, have their CVs reviewed, and get matched with a cohort.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "REST APIs",
+    ],
+    href: "https://pnafrica.com/",
+    liveUrl: "https://pnafrica.com/",
+    type: "Professional",
+  },
+ 
+  {
+    name: "QuickPlate",
+    description:
+      "A full-stack food delivery application with menu browsing, user authentication, a persistent shopping cart, and an administration dashboard for managing food items.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "Cloudinary",
+      "JWT",
+    ],
+    href: "https://food-delivery-frontend-beta-six.vercel.app/",
+    liveUrl: "https://food-delivery-frontend-beta-six.vercel.app/",
+    type: "Personal",
+  },
+  {
+    name: "Provera AI",
+    description:
+      "An AI-assisted transaction fraud detection platform that helps organizations identify suspicious activity, assess transaction risk, and review flagged transactions.",
+    technologies: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+    ],
+    href: "https://provera-ai.vercel.app/",
+    liveUrl: "https://provera-ai.vercel.app/",
+    type: "Professional",
+  },
+  {
+    name: "Task Management App",
+    description:
+      "A task management application for organizing tasks, setting priorities, tracking progress, and finding tasks using search and filters.",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "Lucide Icons",
+    ],
+    href: "https://task-management-steel-tau.vercel.app/",
+    liveUrl: "https://task-management-steel-tau.vercel.app/",
+    githubUrl: "https://github.com/HalimatIge/Task-management.git",
+    type: "Personal",
+  },
+  {
+    name: "Image Search & Collage Platform",
+    description:
+      "A responsive image discovery and collage platform with dynamic image search using Unsplash and OAuth authentication through Google, Facebook, and GitHub.",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "Unsplash API",
+      "OAuth 2.0",
+      "Passport.js",
+    ],
+    href: "/projects/image-search",
+    liveUrl: null,
+    type: "Personal",
+  },
+];
+
+---
+
+<Layout
+  title="Projects — Halimat Ige"
+  description="Professional and personal projects by Halimat Ige, a frontend developer."
+>
+  <Header />
+
+  <main class="container page-section">
+    <header class="page-heading">
+      <h1 class="page-title">Projects</h1>
+      <p class="lead">Things I've built and contributed to.</p>
+    </header>
+
+    <div class="project-filters" aria-label="Filter projects">
+      <button class="filter active" type="button" data-filter="all">
+        All <span>{projects.length}</span>
+      </button>
+      <button class="filter" type="button" data-filter="professional">
+        Professional
+      </button>
+      <button class="filter" type="button" data-filter="personal">
+        Personal
+      </button>
+    </div>
+
+    <section class="project-list" aria-label="Project list">
+      {projects.map((project) => (
+        <article class="project-item" data-category={project.type.toLowerCase()}>
+          <h2>
+            <a href={project.href}>{project.name}</a>
+          </h2>
+
+          <p class="project-description">{project.description}</p>
+
+          <div class="project-technologies" aria-label="Technologies used">
+            {project.technologies.map((technology) => (
+              <span>{technology}</span>
+            ))}
+          </div>
+
+          <a class="project-link" href={project.href}>
+            View project <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </section>
+
+    <p class="closing-note">
+      Interested in what went into a project?
+      <a class="text-link" href="/contact">Let's talk.</a>
+    </p>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-heading {
+    margin-bottom: 25px;
+  }
+
+  .project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 20px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+
+  .filter:hover,
+  .filter.active {
+    color: var(--text);
+  }
+
+  .filter.active {
+    font-weight: 650;
+  }
+
+  .filter span {
+    display: inline-grid;
+    min-width: 21px;
+    height: 21px;
+    place-items: center;
+    padding-inline: 5px;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  .project-list {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-item {
+    padding-block: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-item:last-child {
+    border-bottom: 0;
+  }
+
+  .project-item h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+
+  .project-item h2 a {
+    transition: color 160ms ease;
+  }
+
+  .project-item h2 a:hover {
+    color: var(--accent);
+  }
+
+  .project-description {
+    margin: 8px 0 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 13px;
+    margin-top: 10px;
+  }
+
+  .project-technologies span {
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .project-link {
+    display: inline-block;
+    margin-top: 9px;
+    color: var(--accent);
+    font-size: 0.86rem;
+  }
+
+  .project-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .closing-note {
+    margin-top: 27px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .closing-note a {
+    margin-left: 5px;
+  }
+
+  @media (max-width: 600px) {
+    .project-filters {
+      gap: 10px 15px;
+    }
+
+    .project-item {
+      padding-block: 21px;
+    }
+  }
+</style>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>(".filter");
+  const items = document.querySelectorAll<HTMLElement>(".project-item");
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const selected = filter.dataset.filter ?? "all";
+
+      filters.forEach((button) => {
+        const active = button === filter;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      items.forEach((item) => {
+        const matches =
+          selected === "all" || item.dataset.category === selected;
+
+        item.hidden = !matches;
+      });
+    });
+  });
+
+  filters.forEach((filter) => {
+    filter.setAttribute(
+      "aria-pressed",
+      String(filter.classList.contains("active")),
+    );
+  });
+</script>

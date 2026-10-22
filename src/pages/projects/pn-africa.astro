@@ -1,0 +1,228 @@
+
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const technologies = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "shadcn/ui",
+  "Axios",
+  "REST APIs",
+  "Git",
+];
+---
+
+<Layout
+  title="PN Africa — Halimat Ige"
+  description="Frontend development contributions to PN Africa, a mentorship and career-development platform."
+>
+  <Header />
+
+  <main class="container page-section">
+    <a class="back-link" href="/projects">← All projects</a>
+
+    <header class="case-header">
+      <p class="eyebrow">Professional project</p>
+      <h1 class="page-title">PN Africa</h1>
+      <p class="lead">
+        Building interfaces for a mentorship and career-development platform
+        that helps applicants connect with opportunities and professional guidance.
+      </p>
+
+      <div class="project-links">
+        <a
+          class="pill-link"
+          href="https://pnafrica.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit website ↗
+        </a>
+        <a class="pill-link" href="/contact">Discuss this project ↗</a>
+      </div>
+    </header>
+
+    <section class="case-section">
+      <h2>Overview</h2>
+      <p>
+        PN Africa is a platform focused on mentorship and career development.
+        I contribute to its frontend, building responsive pages and reusable
+        interface components that support the platform's public experience
+        and applicant workflows.
+      </p>
+    </section>
+
+    <section class="case-section">
+      <h2>My contributions</h2>
+      <ul>
+        <li>
+          Developed responsive pages and reusable UI components using Next.js,
+          React, TypeScript, and Tailwind CSS.
+        </li>
+        <li>
+          Built the FAQ page and contributed to applicant payment interfaces.
+        </li>
+        <li>
+          Worked on public-facing sections and dashboard interfaces.
+        </li>
+        <li>
+          Integrated frontend components with REST APIs and collaborated
+          through Git and GitHub.
+        </li>
+        <li>
+          Worked alongside designers and backend developers as the platform evolved.
+        </li>
+      </ul>
+    </section>
+
+    <section class="case-section">
+      <h2>Technology</h2>
+      <div class="technology-list">
+        {technologies.map((technology) => <span>{technology}</span>)}
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2>What I learned</h2>
+      <p>
+        This project has given me experience contributing to an evolving
+        product, structuring reusable components, working with API-driven
+        interfaces, and collaborating across frontend, backend, and design.
+      </p>
+    </section>
+
+    <nav class="case-navigation" aria-label="Other projects">
+      <a href="/projects/noor-takaful">
+        <span>Next project</span>
+        <strong>Noor Takaful →</strong>
+      </a>
+      <a href="/projects/quickplate">
+        <span>Personal project</span>
+        <strong>QuickPlate ↗</strong>
+      </a>
+    </nav>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .case-header {
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-header .eyebrow {
+    margin: 0 0 8px;
+  }
+
+  .case-header .lead {
+    max-width: 610px;
+    margin-top: 15px;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+  }
+
+  .case-section {
+    padding-block: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-section h2 {
+    margin: 0 0 13px;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+
+  .case-section p,
+  .case-section li {
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.85;
+  }
+
+  .case-section p {
+    margin: 0;
+  }
+
+  .case-section ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .case-section li::marker {
+    color: var(--accent);
+  }
+
+  .technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .technology-list span {
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .case-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .case-navigation a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  .case-navigation a:hover {
+    border-color: var(--accent);
+  }
+
+  .case-navigation span {
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .case-navigation strong {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    .case-navigation {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

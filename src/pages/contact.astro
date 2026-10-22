@@ -1,0 +1,459 @@
+
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const email = "halimatyetundeige@gmail.com";
+const github = "https://github.com/HalimatIge";
+const linkedin = "https://www.linkedin.com/in/halimat-ige-76b121233/";
+---
+
+<Layout
+  title="Contact — Halimat Ige"
+  description="Contact Halimat Ige about frontend development opportunities, collaborations, and projects."
+>
+  <Header />
+
+  <main class="container page-section">
+    <header class="contact-heading">
+      <p class="eyebrow">Contact</p>
+      <h1 class="page-title">Let's talk.</h1>
+      <p class="lead">
+        Have a project, an opportunity, or simply want to connect? I'd love
+        to hear from you.
+      </p>
+    </header>
+
+    <section class="contact-details" aria-labelledby="connect-heading">
+      <h2 id="connect-heading" class="section-label">Find me online</h2>
+
+      <div class="contact-row">
+        <span>Email</span>
+        <a class="text-link" href={`mailto:${email}`}>{email}</a>
+      </div>
+
+      <div class="contact-row">
+        <span>GitHub</span>
+        <a
+          class="text-link"
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View my GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="contact-row">
+        <span>LinkedIn</span>
+        <a
+          class="text-link"
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Connect on LinkedIn <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="message-section" aria-labelledby="message-heading">
+      <div class="message-heading">
+        <p class="eyebrow">Send a message</p>
+        <h2 id="message-heading">What would you like to discuss?</h2>
+        <p>
+          Fill in the details below. Your email application will open with
+          your message ready to send.
+        </p>
+      </div>
+
+      <form id="contact-form" novalidate>
+        <div class="form-field">
+          <label for="name">Your name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="How should I address you?"
+            autocomplete="name"
+            required
+            maxlength="100"
+            aria-describedby="name-error"
+          />
+          <p class="field-error" id="name-error" aria-live="polite"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="sender-email">Your email</label>
+          <input
+            id="sender-email"
+            name="sender-email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+            maxlength="254"
+            aria-describedby="sender-email-error"
+          />
+          <p
+            class="field-error"
+            id="sender-email-error"
+            aria-live="polite"
+          ></p>
+        </div>
+
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            placeholder="Project, opportunity, collaboration..."
+            required
+            maxlength="150"
+            aria-describedby="subject-error"
+          />
+          <p class="field-error" id="subject-error" aria-live="polite"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            placeholder="Tell me a little about what you have in mind..."
+            required
+            maxlength="5000"
+            aria-describedby="message-error"
+          ></textarea>
+          <p class="field-error" id="message-error" aria-live="polite"></p>
+        </div>
+
+        <button class="submit-button" type="submit">
+          Open email draft <span aria-hidden="true">↗</span>
+        </button>
+
+        <p
+          id="form-status"
+          class="form-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </form>
+    </section>
+
+    <section class="availability-note">
+      <span class="availability-dot" aria-hidden="true"></span>
+      <p>
+        Open to meaningful projects, frontend development opportunities,
+        and collaborations.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  const status = document.querySelector<HTMLParagraphElement>("#form-status");
+
+  const fields = [
+    {
+      id: "name",
+      message: "Please fill out this field.",
+    },
+    {
+      id: "sender-email",
+      message: "Please fill out this field.",
+    },
+    {
+      id: "subject",
+      message: "Please fill out this field.",
+    },
+    {
+      id: "message",
+      message: "Please fill out this field.",
+    },
+  ];
+
+  function validateField(id: string): boolean {
+    const input = document.getElementById(
+      id,
+    ) as HTMLInputElement | HTMLTextAreaElement | null;
+
+    const error = document.getElementById(`${id}-error`);
+
+    if (!input || !error) return true;
+
+    let errorMessage = "";
+
+    if (!input.value.trim()) {
+      errorMessage = "Please fill out this field.";
+    } else if (id === "sender-email" && !input.validity.valid) {
+      errorMessage = "Please enter a valid email address.";
+    }
+
+    error.textContent = errorMessage;
+
+    if (errorMessage) {
+      input.setAttribute("aria-invalid", "true");
+    } else {
+      input.removeAttribute("aria-invalid");
+    }
+
+    return !errorMessage;
+  }
+
+  fields.forEach(({ id }) => {
+    const input = document.getElementById(id);
+
+    input?.addEventListener("input", () => {
+      validateField(id);
+
+      if (status) status.textContent = "";
+    });
+
+    input?.addEventListener("blur", () => {
+      if ((input as HTMLInputElement | HTMLTextAreaElement).value.trim()) {
+        validateField(id);
+      }
+    });
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!form) return;
+
+    const results = fields.map(({ id }) => ({
+      id,
+      valid: validateField(id),
+    }));
+
+    const firstInvalid = results.find((result) => !result.valid);
+
+    if (firstInvalid) {
+      document.getElementById(firstInvalid.id)?.focus();
+
+      if (status) status.textContent = "";
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    const name = String(formData.get("name") ?? "").trim();
+    const senderEmail = String(formData.get("sender-email") ?? "").trim();
+    const subject = String(formData.get("subject") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    const emailSubject = encodeURIComponent(subject);
+    const emailBody = encodeURIComponent(
+      `Hi Halimat,\n\n${message}\n\nFrom: ${name}\nEmail: ${senderEmail}`,
+    );
+
+    if (status) {
+      status.textContent =
+        "Opening your email application. Please review and send the draft there.";
+    }
+
+    window.location.href =
+      `mailto:halimatyetundeige@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+  });
+</script>
+
+<style>
+  .contact-heading {
+    max-width: 580px;
+    padding-bottom: 36px;
+  }
+
+  .contact-heading .eyebrow {
+    margin: 0 0 9px;
+  }
+
+  .contact-heading .lead {
+    margin-top: 14px;
+  }
+
+  .contact-details {
+    padding-block: 27px 31px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    margin: 0 0 15px;
+    font-size: 0.9rem;
+    font-weight: 650;
+  }
+
+  .contact-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding-block: 11px;
+  }
+
+  .contact-row > span {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .contact-row > a {
+    justify-self: start;
+    overflow-wrap: anywhere;
+    font-size: 0.9rem;
+  }
+
+  .message-section {
+    padding-top: 39px;
+  }
+
+  .message-heading {
+    margin-bottom: 24px;
+  }
+
+  .message-heading .eyebrow {
+    margin: 0 0 5px;
+  }
+
+  .message-heading h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: -0.03em;
+  }
+
+  .message-heading > p:last-child {
+    margin: 9px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  #contact-form {
+    display: grid;
+    gap: 19px;
+  }
+
+  .form-field {
+    display: grid;
+    gap: 7px;
+  }
+
+  .form-field label {
+    font-size: 0.88rem;
+    font-weight: 550;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 11px 12px;
+    background: var(--background);
+    color: var(--text);
+    outline: none;
+    transition: border-color 160ms ease;
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.8;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-field input[aria-invalid="true"],
+  .form-field textarea[aria-invalid="true"] {
+    border-color: #dc2626;
+  }
+
+  .field-error {
+    min-height: 0;
+    margin: 0;
+    color: #dc2626;
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .submit-button {
+    display: inline-flex;
+    justify-self: start;
+    align-items: center;
+    gap: 13px;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 10px 15px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .submit-button:hover {
+    border-color: var(--accent-hover);
+    background: var(--accent-hover);
+  }
+
+  .submit-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .form-status {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .availability-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 40px;
+    padding-top: 21px;
+    border-top: 1px solid var(--border);
+  }
+
+  .availability-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    margin-top: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .availability-note p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 480px) {
+    .contact-row {
+      grid-template-columns: 80px 1fr;
+      gap: 10px;
+    }
+
+    .message-heading h2 {
+      font-size: 1.15rem;
+    }
+  }
+</style>

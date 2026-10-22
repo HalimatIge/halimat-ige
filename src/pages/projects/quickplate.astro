@@ -1,0 +1,395 @@
+
+---
+import Layout from "../../layouts/Layout.astro";
+
+const technologies = [
+  "React",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "Mongoose",
+  "Tailwind CSS",
+  "Cloudinary",
+  "JWT",
+  "Axios",
+];
+
+const features = [
+  {
+    title: "Authentication and authorization",
+    description:
+      "Implemented registration and login using JWT authentication with HTTP-only cookies, access and refresh tokens, and role-based access for customers and administrators.",
+  },
+  {
+    title: "Food catalogue",
+    description:
+      "Built food listing interfaces that display product information, prices, categories, descriptions, and images.",
+  },
+  {
+    title: "Persistent shopping cart",
+    description:
+      "Designed a cart system that stores customer cart data in MongoDB so cart items can persist between sessions.",
+  },
+  {
+    title: "Admin management",
+    description:
+      "Created administrative functionality for adding, editing, and deleting food items.",
+  },
+  {
+    title: "Image management",
+    description:
+      "Integrated Cloudinary for uploading and managing food images.",
+  },
+  {
+    title: "Frontend and API integration",
+    description:
+      "Connected the React frontend to backend REST APIs and handled authentication credentials and application state.",
+  },
+];
+---
+
+<Layout title="QuickPlate — Halimat Ige" description="QuickPlate, a MERN stack food delivery application built by Halimat Ige.">
+  <main class="container project-page">
+    <a href="/projects/" class="back-link">
+      <span aria-hidden="true">←</span>
+      All projects
+    </a>
+
+    <header class="project-header">
+      <p class="eyebrow">Personal project · Full-stack development</p>
+      <h1>QuickPlate</h1>
+      <p class="project-intro">
+        A food delivery application built with the MERN stack, featuring
+        customer authentication, food catalogue management, a persistent
+        shopping cart, and administrative controls.
+      </p>
+
+      <div class="project-actions">
+        <a
+          href="https://food-delivery-frontend-beta-six.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="primary-link"
+        >
+          Visit live website <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          href="https://github.com/HalimatIge"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="secondary-link"
+        >
+          GitHub profile <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="project-meta">
+        <div>
+          <span class="meta-label">Project type</span>
+          <p>Full-stack web application</p>
+        </div>
+        <div>
+          <span class="meta-label">Stack</span>
+          <p>MERN</p>
+        </div>
+        <div>
+          <span class="meta-label">Deployment</span>
+          <p>Vercel frontend</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="project-section">
+      <p class="eyebrow">01 / Overview</p>
+      <h2>About the project</h2>
+      <p>
+        QuickPlate is a food delivery web application designed to make browsing
+        food items and managing orders straightforward. The project combines a
+        React frontend with a Node.js and Express backend, using MongoDB for
+        data persistence.
+      </p>
+      <p>
+        I focused on building reusable frontend interfaces, integrating APIs,
+        implementing authentication, and supporting customer and administrator
+        workflows.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <p class="eyebrow">02 / Features</p>
+      <h2>What I built</h2>
+
+      <div class="feature-list">
+        {features.map((feature, index) => (
+          <article class="feature-item">
+            <span class="feature-number">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="project-section">
+      <p class="eyebrow">03 / Technologies</p>
+      <h2>Tools and technologies</h2>
+      <div class="technology-list">
+        {technologies.map((technology) => (
+          <span class="technology-pill">{technology}</span>
+        ))}
+      </div>
+    </section>
+
+    <section class="project-section">
+      <p class="eyebrow">04 / What I learned</p>
+      <h2>Building beyond the interface</h2>
+      <p>
+        QuickPlate helped me practise full-stack development, API integration,
+        authentication flows, role-based access control, persistent application
+        data, and the connection between frontend interactions and backend
+        services.
+      </p>
+    </section>
+
+    <nav class="project-navigation" aria-label="Project navigation">
+      <a href="/projects/noor-takaful/" class="navigation-link">
+        <span class="navigation-label">Previous project</span>
+        <span class="navigation-title">Noor Takaful <span aria-hidden="true">↗</span></span>
+      </a>
+      <a href="/projects/" class="navigation-link navigation-next">
+        <span class="navigation-label">Explore more</span>
+        <span class="navigation-title">All projects <span aria-hidden="true">→</span></span>
+      </a>
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .project-page {
+    padding-top: 36px;
+    padding-bottom: 72px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: color 160ms ease;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .project-header {
+    padding: 54px 0 42px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.6rem, 8vw, 4.2rem);
+    font-weight: 650;
+    letter-spacing: -0.065em;
+    line-height: 1.1;
+  }
+
+  .project-intro {
+    max-width: 610px;
+    margin: 22px 0 0;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.85;
+  }
+
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .primary-link,
+  .secondary-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .primary-link {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .primary-link:hover {
+    border-color: var(--accent-hover);
+    background: var(--accent-hover);
+  }
+
+  .secondary-link {
+    color: var(--text);
+  }
+
+  .secondary-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .project-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 42px;
+  }
+
+  .meta-label {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .project-meta p {
+    margin: 4px 0 0;
+    font-size: 0.92rem;
+    font-weight: 550;
+  }
+
+  .project-section {
+    padding: 42px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-section h2 {
+    margin: 0 0 18px;
+    font-size: clamp(1.45rem, 4vw, 1.8rem);
+    font-weight: 650;
+    letter-spacing: -0.045em;
+    line-height: 1.35;
+  }
+
+  .project-section > p:not(.eyebrow) {
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  .feature-list {
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .feature-item {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 14px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feature-number {
+    padding-top: 2px;
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .feature-item h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+
+  .feature-item p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.8;
+  }
+
+  .technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  .technology-pill {
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.83rem;
+  }
+
+  .project-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 28px;
+  }
+
+  .navigation-link {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .navigation-next {
+    text-align: right;
+  }
+
+  .navigation-label {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .navigation-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 160ms ease;
+  }
+
+  .navigation-link:hover .navigation-title {
+    color: var(--accent);
+  }
+
+  @media (max-width: 540px) {
+    .project-header {
+      padding-top: 38px;
+    }
+
+    .project-meta {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .project-navigation {
+      align-items: flex-start;
+    }
+  }
+</style>

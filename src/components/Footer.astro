@@ -1,0 +1,76 @@
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>Designed and built by Halimat Ige.</p>
+
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a
+        href="https://github.com/HalimatIge"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub ↗
+      </a>
+      <a
+        href="https://www.linkedin.com/in/halimat-ige-76b121233/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn ↗
+      </a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <p class="copyright">© {new Date().getFullYear()}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 55px;
+    padding-block: 22px 28px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13px 20px;
+    width: min(720px, calc(100% - 40px));
+    margin-inline: auto;
+  }
+
+  .footer-inner p {
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-links a {
+    transition: color 160ms ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .copyright {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 500px) {
+    .footer-inner {
+      width: calc(100% - 36px);
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,223 @@
+
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const technologies = [
+  "Next.js",
+  "TypeScript",
+  "shadcn/ui",
+  "REST APIs",
+  "Postman",
+];
+---
+
+<Layout
+  title="Noor Takaful — Halimat Ige"
+  description="Application support and frontend development contributions at Noor Takaful Insurance Plc."
+>
+  <Header />
+
+  <main class="container page-section">
+    <a class="back-link" href="/projects">← All projects</a>
+
+    <header class="case-header">
+      <p class="eyebrow">Professional experience</p>
+      <h1 class="page-title">Noor Takaful</h1>
+      <p class="lead">
+        Improving internal application experiences and supporting business
+        workflows in an insurance environment.
+      </p>
+      <div class="project-links">
+        <a class="pill-link" href="/experience">View experience ↗</a>
+        <a class="pill-link" href="/contact">Get in touch ↗</a>
+      </div>
+    </header>
+
+    <section class="case-section">
+      <h2>Overview</h2>
+      <p>
+        At Noor Takaful Insurance Plc, my work combines application support
+        with frontend development. I help users resolve ERP and mobile
+        application issues while contributing to internal web interfaces
+        and workflow improvements.
+      </p>
+    </section>
+
+    <section class="case-section">
+      <h2>My contributions</h2>
+      <ul>
+        <li>
+          Contributed to the frontend of an internal intranet portal.
+        </li>
+        <li>
+          Built an agency module to support internal business processes.
+        </li>
+        <li>
+          Investigated and fixed bugs in the Reinsurance Treaty and Fund
+          Transfer modules.
+        </li>
+        <li>
+          Troubleshot ERP modules, including HR, Finance, and Inventory,
+          as well as mobile application issues.
+        </li>
+        <li>
+          Supported user acceptance testing, account and role configuration,
+          issue documentation, and end-user guidance.
+        </li>
+        <li>
+          Used API testing and collaboration tools to investigate and
+          resolve application issues.
+        </li>
+      </ul>
+    </section>
+
+    <section class="case-section">
+      <h2>Technology</h2>
+      <div class="technology-list">
+        {technologies.map((technology) => <span>{technology}</span>)}
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2>What I learned</h2>
+      <p>
+        Working with enterprise applications has strengthened my
+        troubleshooting skills, understanding of business workflows,
+        communication with end users, and ability to balance development
+        work with application support.
+      </p>
+    </section>
+
+    <nav class="case-navigation" aria-label="Other projects">
+      <a href="/projects/pn-africa">
+        <span>Previous project</span>
+        <strong>← PN Africa</strong>
+      </a>
+      <a href="/projects/quickplate">
+        <span>Personal project</span>
+        <strong>QuickPlate →</strong>
+      </a>
+    </nav>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .case-header {
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-header .eyebrow {
+    margin: 0 0 8px;
+  }
+
+  .case-header .lead {
+    max-width: 610px;
+    margin-top: 15px;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+  }
+
+  .case-section {
+    padding-block: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-section h2 {
+    margin: 0 0 13px;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+
+  .case-section p,
+  .case-section li {
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.85;
+  }
+
+  .case-section p {
+    margin: 0;
+  }
+
+  .case-section ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .case-section li::marker {
+    color: var(--accent);
+  }
+
+  .technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .technology-list span {
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .case-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .case-navigation a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  .case-navigation a:hover {
+    border-color: var(--accent);
+  }
+
+  .case-navigation span {
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .case-navigation strong {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    .case-navigation {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
